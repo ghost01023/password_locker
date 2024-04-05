@@ -27,7 +27,7 @@ window.geometry(geometry_string)
 
 
 def set_border(item_id, val):
-    width_val = 3 if canvas.type(item_id) == "oval" else 1
+    width_val = 3 if str(canvas.type(item_id)) == "oval" else 1
     canvas.itemconfigure(item_id, width=(width_val if val else 0), dash=(1, 2))
 
 
@@ -95,7 +95,7 @@ def drag_event(event, item_id):
         update_figure(item_id, drag_event_array)
     else:
         drag_event_array.append((event.x, event.y))
-    print(drag_event_array)
+    # print(drag_event_array)
 
 
 # canvas
@@ -125,7 +125,7 @@ canvas.bind("<ButtonRelease-1>", lambda p: canvas_r_btn_reset())
 window.bind("<KeyPress>", lambda p: delete_element(p.keysym))
 
 # figure choices
-figure_choices = ("rectangle", "oval", "line")
+figure_choices = ("rectangle", "oval", "line", "free-hand")
 figure_choice_val = tk.StringVar(value=figure_choices[0])
 figure_menu = tk.OptionMenu(window, figure_choice_val, *figure_choices)
 figure_menu.pack(side="left")

@@ -19,14 +19,14 @@ combo_box.bind("<<ComboboxSelected>>", lambda x: print("Testing..."))
 combo_box.pack()
 
 
-def spin_crement(event):
+def spin_change_val():
     spin_int.set(((spin_int.get()) % 44))
 
 
 spin_int = tk.IntVar(value=3)
 spin = ttk.Spinbox(window, from_=3, to=44, textvariable=spin_int)
-spin.bind("<<Increment>>", spin_crement)
-spin.bind("<<Decrement>>", spin_crement)
+spin.bind("<<Increment>>", lambda x: spin_change_val())
+spin.bind("<<Decrement>>", lambda x: spin_change_val())
 # spin["value"] = [x for x in range(0, 100)]
 spin.pack()
 
